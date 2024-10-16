@@ -1,0 +1,33 @@
+// go to your spreadsheet then extensions then apps script , type any name you want then allow anyone to access this ( to make this publicly accessible) publish web app. Then paste the below provided code and deploy the app
+
+// Ensure the Spreadsheet have only these columns and that too in the mentioned format 
+
+// Sr No. |	User Name |	User Email |	Access Code Redemption Status |	All Skill Badges & Games Completed |	# of Skill Badges Completed	| # of Arcade Games Completed
+
+// just delete other columns
+
+// now after deploying your web app you will get web url paste that in leaderboard.js file in place of ENTER_YOUR_WEB_APP_URL
+
+function doGet(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1');  // Access 'Sheet1'
+  var range = sheet.getDataRange();  // Get all the data in the sheet
+  var values = range.getValues();  // Get the data as a 2D array
+  
+  var headers = values[0];  // First row contains the headers
+  var data = [];
+  
+  for (var i = 1; i < values.length; i++) {  // Loop through each row (starting from row 2)
+    var rowObject = {};  // Object to hold row data
+    for (var j = 0; j < headers.length; j++) {
+      rowObject[headers[j]] = values[i][j];  // Map headers to row values
+    }
+    data.push(rowObject);  // Add row object to the data array
+  }
+  
+  // Convert the data to JSON
+  var jsonOutput = JSON.stringify(data);
+  
+  // Return the data as JSON with proper content type
+  return ContentService.createTextOutput(jsonOutput).setMimeType(ContentService.MimeType.JSON);
+}
+

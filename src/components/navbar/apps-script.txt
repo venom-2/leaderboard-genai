@@ -1,0 +1,31 @@
+// now if you need the last updated time , no of participants enrolled , no of participants completed arcade , no of participants completed all skill badges number to change straight from spreadsheet 
+
+// make a new spreadsheet with these columns 
+
+// Time |	Arcade	 | Enrolled	| Completed Skill Badges
+
+// then same extensions method 
+
+// paste the below code and deploy 
+
+// change the WEB APP URL in nav.js also to change data from sheet
+
+function doGet() {
+  // Get the active spreadsheet
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1"); // Update with your sheet name
+
+  // Fetch data from A2 to D2
+  var data = sheet.getRange("A2:D2").getValues();
+
+  // Prepare the response object
+  var response = {
+    time: data[0][0],         // "Time" from column A
+    arcade: data[0][1],       // "Arcade" from column B
+    enrolled: data[0][2],     // "Enrolled" from column C
+    completed: data[0][3],    // "Completed Skill Badges" from column D
+  };
+
+  // Return as JSON
+  return ContentService.createTextOutput(JSON.stringify(response)).setMimeType(ContentService.MimeType.JSON);
+}
+
