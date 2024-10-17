@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Logo from "../../assets/gdg-sharp.svg";
+import Logo from "../../assets/gdg.png";
 import "./nav.css";
 import { Link } from 'react-router-dom';
 import { MoonLoader, PulseLoader } from 'react-spinners';

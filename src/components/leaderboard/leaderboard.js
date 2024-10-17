@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './leaderboard.css'; // Import the CSS file
-import { BarLoader, MoonLoader } from 'react-spinners';
+import { BarLoader } from 'react-spinners';
 import confetti from 'canvas-confetti';
 
 function Leaderboard() {
@@ -26,7 +26,7 @@ function Leaderboard() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'ENTER_YOUR_WEB_APP_URL'
+          'https://script.google.com/macros/s/AKfycbz9pmOHxjAcZAvuisNIFJ_5s6KWmLv74GGQhB4FENvC2MxzlVH1n2cCBiaEcLV2O5LEKA/exec'
         );
         setData(response.data);
         setLoading(false);
@@ -88,14 +88,14 @@ function Leaderboard() {
                 <td>{row['User Name']}</td>
                 <td className="email-column">{row['User Email']}</td>
                 <td className="centered-cell">
-                  <p className={`${row['Access Code Redemption Status'] == 'Yes' ? 'yes-cell' : 'no-cell' }`} > {row['Access Code Redemption Status']}</p>
+                  <p className={`${row['Access Code Redemption Status'] === 'Yes' ? 'yes-cell' : 'no-cell' }`} > {row['Access Code Redemption Status']}</p>
                 </td>
                 <td className="centered-cell">
-                 <p className={`${row['All Skill Badges & Games Completed'] == 'Yes' ? 'yes-cell' : 'no-cell' }`} > {row['All Skill Badges & Games Completed']} </p>
+                 <p className={`${row['All Skill Badges & Games Completed'] === 'Yes' ? 'yes-cell' : 'no-cell' }`} > {row['All Skill Badges & Games Completed']} </p>
                 </td>
                 <td className="centered-cell">{row['# of Skill Badges Completed']}</td>
                 <td className="centered-cell">
-                <p className={`${row['# of Arcade Games Completed'] == '1' ? 'yes-cell' : 'no-cell' }`} > {row['# of Arcade Games Completed']} </p>
+                <p className={`${row['# of Arcade Games Completed'] === '1' ? 'yes-cell' : 'no-cell' }`} > {row['# of Arcade Games Completed']} </p>
                 </td>
               </tr>
             ))}

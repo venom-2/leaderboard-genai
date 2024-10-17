@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Leaderboard from './components/leaderboard/leaderboard';
 import NavBar from './components/navbar/nav';
 import Footer from './components/footer/footer';
@@ -11,11 +11,11 @@ function App() {
 
   useEffect(() => {
     
-    const handleContextMenu = (event) => {
-      event.preventDefault();
-      setWarning('Data is protected');
-      setTimeout(() => setWarning(''), 2000); 
-    };
+    // const handleContextMenu = (event) => {
+    //   event.preventDefault();
+    //   setWarning('Data is protected');
+    //   setTimeout(() => setWarning(''), 2000); 
+    // };
 
     // Function to restrict Ctrl+Shift+I (Developer Tools) and show warning
     const handleKeydown = (event) => {
@@ -28,12 +28,12 @@ function App() {
     };
 
    
-    document.addEventListener('contextmenu', handleContextMenu);
+    // document.addEventListener('contextmenu', handleContextMenu);
     document.addEventListener('keydown', handleKeydown);
 
     
     return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
+      // document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('keydown', handleKeydown);
     };
   }, []);
